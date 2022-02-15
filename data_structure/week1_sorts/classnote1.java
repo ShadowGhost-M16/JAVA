@@ -1,4 +1,5 @@
-package data_structure;
+package data_structure.week1_sorts;
+
 
 public class classnote1 {
     public int findMin(int[] array) {

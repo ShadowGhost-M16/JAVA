@@ -1,0 +1,359 @@
+2/1/22
+N = the number of items in the list
+we care about end of the growth of N
+we care about the cost of the time of how long the growth takes 
+arrithmetic series: each term is cumputed from the previous one by adding a constant 
+sum of an arrithmetic : n times the mean of the first and last terms
+// n(n+0)/2 = n^2/2 ==> aympstically same as n^2
+2/3/22
+
+Two things we dont consider in algorimathic
+1) the constant multiplyers or constant
+2)Any setups that doesnt consider N and
+anything in terms of n
+
+
+Example 
+
+
+
+
+
+*/
+When you have a linear al
+Quardatic sorts are useful 
+A linear are more advanced and time cost
+What you need to know is 
+put run time 
+
+SORTS 
+{
+    Quadric Sorts
+    Simple Sorts > Bubble Sorts 
+    519623
+    6 & 9 gets switched 
+    9 & 2 gets switched
+    9 & 3 gets switched 
+    new arr[] is 516239
+    part 2 is 516239
+    5 & 1 gets switched 
+    5 & 3 gets switched
+    Sorts > Selection Sort
+    [5/1 9 6 2 3]
+   1 5 9 6 2 3
+   selection sorts has smaller sorts than bubble sorts
+    
+hevy notes from feb 3 
+
+Asymptotic Analysis 
+
+Things we don't care about when comparing algorithms: 
+
+Anything in the algorithm that is not in terms of n 
+
+Any constant multipliers 
+
+If we have two parts of the analysis in terms of N in a linear algorithm, only care about the bigger one ie. x^2 + x, we care about x^2 only  
+
+Linear is always going to be slower than quadratic as N grows larger. 
+
+Log base 2(n) means you need to double your n in order to increase your time by 1.  
+
+This is going to be much much faster than a linear algorithm 
+
+When it comes to finding an element in an array, and the array is sorted, it takes you log(n) for binary search. 
+
+Unsorted, constant time to put things in, n times to take things out. 
+
+Sorted, log n time to put things in, log n times to take things out. 
+
+A quadratic equation no matter what its multiplied or added by, it's always going to be more expensive than a linear equation. 
+
+A linear equation is going to be more expensive than a logarithmic algorithm 
+
+ 
+
+In the worst case, quadratic sorts always take n^2 time 
+
+ 
+
+Simple Sorts 
+
+Simple sorts always take more time. 
+
+Bubble Sort 
+
+Start off at i and i+1, if arr[i] is greater than a[i+1] then you switch them. 
+
+Through each iteration, the largest element gets put at the end. On the i'th pass through the array the ith largest element gets put in the second to last position. 
+
+This takes n^2 times. 
+
+With the modification, it's still n^2. This modificationi becomes an arithmetic series n+(n-1)... the sum of this is (n^2)/2, pretty much the  
+
+For (int i=0; i<arr.length;i++{ 
+
+for (int j=0;j<arr.length-i-1;j++){ 
+
+//we don't have to go up to arr.length every time. after the first iteration, the last element is sorted so we can do arr.length-i 
+
+//we need to leave one element to compare it to hence the –1. this avoids the index out of bounds exception. The –1 is not part of the modification. 
+
+int tmp=arr[j]; 
+
+arr[j] = arr[j+1]; 
+
+arr[j+1] = tmp; 
+
+//every iteration, arr[j] is greater than everything after it. 
+
+} 
+
+} 
+
+ 
+
+To keep track of whether there was a swap: 
+
+boolean swapped=false; 
+
+For (int i=0; i<arr.length;i++{ 
+
+for (int j=0;j<arr.length-i-1;j++){ 
+
+//we don't have to go up to arr.length every time. after the first iteration, the last element is sorted so we can do arr.length-i 
+
+//we need to leave one element to compare it to hence the –1. this avoids the index out of bounds exception. The –1 is not part of the modification. 
+
+int tmp=arr[j]; 
+
+arr[j] = arr[j+1]; 
+
+arr[j+1] = tmp; 
+
+swapped=true; 
+
+//every iteration, arr[j] is greater than everything after it. 
+
+} 
+
+}if (!swapped) break; (put this in the i loop) 
+
+} 
+
+if reverse sorted array, then it takes n^2. (WORST CASE) 
+
+if array is sorted or near sorted it takes n time (linear time)(BEST CASE) 
+
+ 
+
+ 
+
+Selection Sort 
+
+https://www.interviewcake.com/concept/java/selection-sort  
+
+On each iteration, you select the next smallest element and put it where it belongs. 
+
+Its invariant is the opposite of bubble sort 
+
+After i iterations, the smallest i elements are sorted. 
+
+Searches through unsorted portion in the array, it does not do many local swaps like bubble sort. 
+
+5 I   1 9 6 2 3  
+
+1 5 I   
+
+      2 9  I 
+
+           3 6 I 
+
+                  5 6 I 
+
+Once an element is sorted it is never looked at again. 
+
+public static void selectionSort(int arr[]){ 
+
+for (int i=0; i <arr.length; i++){ 
+
+int minidx= i ;//keeps track of index of min value. 
+
+//on each iteration we're dealing with a subset of the array from i to the end 
+
+for(int j =i+1;j<arr.length;j++){ 
+
+if(arr[j] < arr[minidx]){ 
+
+minidx=j; 
+
+} 
+
+} 
+
+//we could swap, but we might wastefully swap something with itself 
+
+if(i != minidx){ 
+
+//we are looking for the i'th smallest element, we have to make sure i isn't holding the smallest element 
+
+int temp=arr[j]; 
+
+arr[j]=arr[minidx]; 
+
+arr[minidx]=tmp; 
+
+} 
+
+ 
+
+} 
+
+ 
+
+} 
+
+ 
+
+Selection sort takes n^2 times in an unsorted array. Outer loop n times, inner loop arithmetically (n,n-1,n-1,etc) 
+
+Best case it still takes n^2 times. 
+
+Selection sort takes the smallest number of swaps.  
+
+You don't have to swap every single element every single time. 
+
+If your records are large, and memory lookups are expensive then swapping gets expensive, so selection sort is good to use. 
+
+ 
+
+ 
+
+Stability: what happens if there's a tie? Needed if you want to sort by multiple fields. Stability means it will keep the order that was already there. 
+
+ 
+
+NOT InPlace: in a place that is very tight, you might take your books and put them on the floor and then put them all back in again (we will review this in a sort that is NOT inplace 
+
+ 
+
+Is bubble sort stable? Yes 
+
+ 
+
+Sort 
+
+Best 
+
+Worst 
+
+Stable? 
+
+Inplace? 
+
+Bubble 
+
+n(if sorted, with modification 
+
+n^2 
+
+Yes 
+
+yes 
+
+Selection 
+
+n^2 
+
+n^2 
+
+NO 
+
+yes 
+
+Insertion 
+
+ 
+
+ 
+
+Yes 
+
+ 
+
+ 
+
+Insertion Sort 
+
+https://www.geeksforgeeks.org/insertion-sort/ 
+
+https://www.interviewcake.com/concept/python/insertion-sort  
+
+Similar to sorting a deck of cards 
+
+Start at the beginning and sort as you go. 
+
+It is quick to put things in the right place if something is sorted. 
+
+After i iterations, the first i elements form a mini array that is sorted. 
+
+The sorted portion keeps changing to include more and more elements. things don't stay in the same place. 
+
+Insertion Sort is stable 
+
+It will be modified 
+
+Move things forward instead of back. Look at first element and find element that is larger than it. 
+
+After two iterations, three elements are sorted. 
+
+ 
+
+ 
+
+public static void insertionSort(insertion Sort(int arr[]){ 
+
+for(int i=1; i<arr.length;i++){ 
+
+int k=i-1; 
+
+int curr = a[i]//curr element we're trying to place 
+
+while(k >=0 && curr < arr[k]){                                   //keep moving as long as conditions hold 
+
+arr[k+1]=arr[k];//take arr[k] the one to the left and move it forward. 
+
+k--; 
+
+} 
+
+arr[k+1] = curr; 
+
+//arr[0...i] is sorted 
+
+} 
+
+} 
+
+
+
+
+
+
+
+
+
+
+
+}
+why do we need to write short codes less bugs thats why 
+how is everything java related becayse they are all objects related
+
+arraylist u can add item
+list list = new ArrayList();
+
+
+
+
+list.add(new Array)
+

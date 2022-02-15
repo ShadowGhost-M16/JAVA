@@ -223,19 +223,24 @@ public class linkedlist {
 		
 
 	}
-		public linkedlist reverselist (){
-			int temp;
-			int pos;
-			int j;
+		public void  reverselist (){
 
-				while(head != null)
-				{
-					for(int i=0; i<head.length; i++){
-						
-					}
-					
-				}
-			return null;
+			
+			Node previous1 = null;
+			Node next = null;
+
+			while (head != null)
+			{
+				next = head.nextNode;
+				head.nextNode = previous1;
+				previous1 = head;
+				head = next;
+			}
+				
+			
+
+
+
 
 
 		}
@@ -243,14 +248,17 @@ public class linkedlist {
 	public static void main(String[] args) {
 		linkedlist ls = new linkedlist();
 		linkedlist ls2 =  new linkedlist();
+		
 		ls.insert(13);
 		ls.insert(2222);
 		ls.insert(30);
 		ls.insert(277456467);
 		ls.insert(500);
 		ls.sorted_Linked();
+		/*
 		ls.print();
 		ls.deleteNode(ls.delete_delta());
+		*/
 		ls.print();
 		ls2.insert(1);
 		ls2.insert(1);
@@ -258,9 +266,9 @@ public class linkedlist {
 		ls2.print();
 		ls2.dop();
 		ls2.print();
-		/**
-		 * 
-		 */
+		ls2.reverselist();
+		ls2.print();
+		
 	}
 }
 

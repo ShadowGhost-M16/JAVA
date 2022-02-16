@@ -88,6 +88,7 @@ public class linkedlist {
 
 	}
 	public  void deleteNode(int position)
+	
 	{
 		Node node = new Node();
 

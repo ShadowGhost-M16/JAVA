@@ -108,7 +108,7 @@ public int min()
         obj.push(122);
         obj.push(22);
         System.out.println(obj.top());
-        obj.min();
+        obj.pop();
 
     }
     

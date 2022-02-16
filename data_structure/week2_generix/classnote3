@@ -1,0 +1,11 @@
+generic u use template =  <> 
+in java the template is used as an object 
+c++ does not
+
+primative data type are not data type 
+
+ The idea is to allow type (Integer, String, … etc., and user-defined types) to be a parameter to methods, classes, and interfaces.
+
+ // To create an instance of generic class 
+BaseType <Type> obj = new BaseType <Type>()
+
